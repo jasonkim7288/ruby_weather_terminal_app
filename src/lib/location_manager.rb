@@ -41,14 +41,13 @@ class LocationManager
 
         return result_array
     end
-
+    
     def location_to_string(location_hash)
         return "#{location_hash["City"]}, #{location_hash["AdministrativeArea"]}, #{location_hash["Country"]}"
     end
 
     def add(location_hash)
         @location_list.push(location_hash) if !@location_list.include?(location_hash)
-        p @location_list
         File.write(@file_name_location_list, JSON.generate(@location_list), mode: 'w')
     end
 end

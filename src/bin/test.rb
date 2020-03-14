@@ -1,6 +1,3 @@
-require 'json'
+require 'date'
 
-a = '[{"a":1, "b":"hi"}]'
-b = JSON.parse(a)
-p b
-p b[0].key?("a")
+p DateTime.parse("2020-03-14T07:00:00+13:00").to_date.to_s
