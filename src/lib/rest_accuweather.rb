@@ -16,11 +16,7 @@ class RestAccuweather
 
     def get_location(location)
         str_get = "http://dataservice.accuweather.com/locations/v1/search?apikey=#{@accuweather_key}&q=#{location}"
-        # return RestClient::Request.execute(method: :get, url: "http://dataservice.accuweather.com/locations/v1/search",
-                                    # headers: {params: {apikey: @accuweather_key, q: location}})
-        
-        response =  RestClient.get(str_get)
-        response.code
+        return  RestClient.get(str_get)
     end
 end
 
