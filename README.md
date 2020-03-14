@@ -6,7 +6,6 @@
 * [Purpose and scope](#Purpose-and-scope)
 * [Features](#Features)
 * [User interaction and experience](#User-interaction-and-experience)
-* [Implementation plan](#Implementation-plan)
 * [Installation guide and requirement](#Installation-guide-and-requirement)
 <br /><br /><br />
 
@@ -21,51 +20,57 @@ Weather application will show you the weather information based on the region yo
 [Go back](#table-of-contents)<br /><br /><br />
 
 # Features
-## GPS coordinates search
-
+## City name search
+Once the user input the city name, candidate cities which have the same name but locate in the different country or state can be listed by using AccuWeather REST Api. Each city information has it's own city id and GPS coordinates.
 
 ## Weather prediction
-
+Once getting the city information, you can see the 5 DAY FORECAST of the city by using AccuWeather REST Api.
 
 [Go back](#table-of-contents)<br /><br /><br />
 
 # User interaction and experience
+When started, navigate the menu as below
 
-
-[Go back](#table-of-contents)<br /><br /><br />
-
-# R9 - Implementation plan
-## Outlines
-![trello start](docs/Trello_start.png)
-## Project management
-Platform : Trello<br />
-Project board : [http://trello.com/b/87EDzcri/jasonkimt1a2](http://trello.com/b/87EDzcri/jasonkimt1a2)
+![Decision tree](docs/DecisionTree.png)
 
 [Go back](#table-of-contents)<br /><br /><br />
 
-# R10 - Installation guide and requirement
+# Installation guide and requirement
 ## Get started
 * This installation guide is for Mac users
-1. If you don't have Ruby installed, you can download it and follow the installation instructions available [here](https://www.ruby-lang.org/en/documentation/installation/).
+1. Visit https://developer.accuweather.com/getting-started, and follow all the procedure.
 
-2. If you don't have bunlder gem, run as below
+2. If you don't have Ruby installed, you can download it and follow the installation instructions available [here](https://www.ruby-lang.org/en/documentation/installation/).
+
+3. If you don't have bunlder gem, run as below
 ```
 gem install bundler
 ```
 
-3. Change your working directory to the project source directory
+4. Overwrite your API key of AccuWeather to 'weather_terminal_app/res/accuweather_key.db'.
+Only <strong>One key</strong> should be inside of this file
+
+5. Change your working directory to the project source directory
 ```
 [~]$ cd ~/weather_terminal_app/src
 ```
 
-4. Run the script for Weather terminal application
+6. Run the script for Weather terminal application
 ```
-[~/weather_terminal_app/src]$ ./run_gmail.sh
+[~/weather_terminal_app/src]$ ./run_accuweather.sh
 ```
 
 
 ## Dependencies
 ### Gems required
 - rest-client
+- singleton
+- json
+- pp
+- mac-say
+- colorize
+- tty-prompt
+- tty-table
+- tty-font
 
 [Go back](#table-of-contents)<br /><br /><br />
