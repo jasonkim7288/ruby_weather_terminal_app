@@ -39,7 +39,6 @@ module ScreenControl
         end
     end
 
-
     def ask_new_city(location_manager)
         print AccuweatherConstant::STR_ASK_CITY
         area = gets.chomp
@@ -57,8 +56,6 @@ module ScreenControl
             menu.choice("None of those", count)
         end
     end
-
-
 
     def show_invalid_city
         puts "Invalid city!"
