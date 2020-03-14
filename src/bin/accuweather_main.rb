@@ -22,7 +22,7 @@ loop do
                     location_manager.add(location_list[selected_candidate_city_index])
                     weather_manager.request_weather_info(location_list[selected_candidate_city_index])
                     puts weather_manager.to_table_string
-                    weather_manager.to_tts_string
+                    ScreenControl.tts_run(weather_manager.to_tts_string)
                     ScreenControl.press_any_key
                 end
             else
@@ -42,7 +42,8 @@ loop do
             location = location_manager.location_list[selected_city]
             weather_manager.request_weather_info(location)
             puts weather_manager.to_table_string
-            weather_manager.to_tts_string
+            ScreenControl.tts_run(weather_manager.to_tts_string)
+            ScreenControl.press_any_key
         end
     rescue RestClient::ServiceUnavailable
         ScreenControl.show_service_unavailable

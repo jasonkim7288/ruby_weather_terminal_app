@@ -12,14 +12,14 @@ class WeatherManager
     end
 
     def request_weather_info(location)
-        @location = location
-        response = RestAccuweather.instance.get_weather_info(location["Key"])
-        @weather_daily = []        
-        if response.code == 200
-            response_body = JSON.parse(response.body)
-        # temp = '{"Headline":{"EffectiveDate":"2020-03-14T08:00:00+13:00","EffectiveEpochDate":1584126000,"Severity":4,"Text":"Pleasant Saturday","Category":"","EndDate":null,"EndEpochDate":null,"MobileLink":"http://m.accuweather.com/en/nz/hamilton/256405/extended-weather-forecast/256405?lang=en-us","Link":"http://www.accuweather.com/en/nz/hamilton/256405/daily-weather-forecast/256405?lang=en-us"},"DailyForecasts":[{"Date":"2020-03-14T07:00:00+13:00","EpochDate":1584122400,"Temperature":{"Minimum":{"Value":49.0,"Unit":"F","UnitType":18},"Maximum":{"Value":78.0,"Unit":"F","UnitType":18}},"Day":{"Icon":2,"IconPhrase":"Mostly sunny","HasPrecipitation":false},"Night":{"Icon":34,"IconPhrase":"Mostly clear","HasPrecipitation":false},"Sources":["AccuWeather"],"MobileLink":"http://m.accuweather.com/en/nz/hamilton/256405/daily-weather-forecast/256405?day=1&lang=en-us","Link":"http://www.accuweather.com/en/nz/hamilton/256405/daily-weather-forecast/256405?day=1&lang=en-us"},{"Date":"2020-03-15T07:00:00+13:00","EpochDate":1584208800,"Temperature":{"Minimum":{"Value":49.0,"Unit":"F","UnitType":18},"Maximum":{"Value":80.0,"Unit":"F","UnitType":18}},"Day":{"Icon":1,"IconPhrase":"Sunny","HasPrecipitation":false},"Night":{"Icon":38,"IconPhrase":"Mostly cloudy","HasPrecipitation":false},"Sources":["AccuWeather"],"MobileLink":"http://m.accuweather.com/en/nz/hamilton/256405/daily-weather-forecast/256405?day=2&lang=en-us","Link":"http://www.accuweather.com/en/nz/hamilton/256405/daily-weather-forecast/256405?day=2&lang=en-us"},{"Date":"2020-03-16T07:00:00+13:00","EpochDate":1584295200,"Temperature":{"Minimum":{"Value":59.0,"Unit":"F","UnitType":18},"Maximum":{"Value":76.0,"Unit":"F","UnitType":18}},"Day":{"Icon":4,"IconPhrase":"Intermittent clouds","HasPrecipitation":false},"Night":{"Icon":38,"IconPhrase":"Mostly cloudy","HasPrecipitation":false},"Sources":["AccuWeather"],"MobileLink":"http://m.accuweather.com/en/nz/hamilton/256405/daily-weather-forecast/256405?day=3&lang=en-us","Link":"http://www.accuweather.com/en/nz/hamilton/256405/daily-weather-forecast/256405?day=3&lang=en-us"},{"Date":"2020-03-17T07:00:00+13:00","EpochDate":1584381600,"Temperature":{"Minimum":{"Value":44.0,"Unit":"F","UnitType":18},"Maximum":{"Value":70.0,"Unit":"F","UnitType":18}},"Day":{"Icon":4,"IconPhrase":"Intermittent clouds","HasPrecipitation":false},"Night":{"Icon":35,"IconPhrase":"Partly cloudy","HasPrecipitation":false},"Sources":["AccuWeather"],"MobileLink":"http://m.accuweather.com/en/nz/hamilton/256405/daily-weather-forecast/256405?day=4&lang=en-us","Link":"http://www.accuweather.com/en/nz/hamilton/256405/daily-weather-forecast/256405?day=4&lang=en-us"},{"Date":"2020-03-18T07:00:00+13:00","EpochDate":1584468000,"Temperature":{"Minimum":{"Value":43.0,"Unit":"F","UnitType":18},"Maximum":{"Value":73.0,"Unit":"F","UnitType":18}},"Day":{"Icon":4,"IconPhrase":"Intermittent clouds","HasPrecipitation":false},"Night":{"Icon":35,"IconPhrase":"Partly cloudy","HasPrecipitation":false},"Sources":["AccuWeather"],"MobileLink":"http://m.accuweather.com/en/nz/hamilton/256405/daily-weather-forecast/256405?day=5&lang=en-us","Link":"http://www.accuweather.com/en/nz/hamilton/256405/daily-weather-forecast/256405?day=5&lang=en-us"}]}'
-        # if true
-        #     response_body = JSON.parse(temp)
+        @location = location        
+        @weather_daily = []
+        # response = RestAccuweather.instance.get_weather_info(location["Key"])
+        # if response.code == 200
+        #     response_body = JSON.parse(response.body)
+        temp = '{"Headline":{"EffectiveDate":"2020-03-14T08:00:00+13:00","EffectiveEpochDate":1584126000,"Severity":4,"Text":"Air quality will be unhealthy for sensitive groups Tuesday morning through Wednesday morning.","Category":"","EndDate":null,"EndEpochDate":null,"MobileLink":"http://m.accuweather.com/en/nz/hamilton/256405/extended-weather-forecast/256405?lang=en-us","Link":"http://www.accuweather.com/en/nz/hamilton/256405/daily-weather-forecast/256405?lang=en-us"},"DailyForecasts":[{"Date":"2020-03-14T07:00:00+13:00","EpochDate":1584122400,"Temperature":{"Minimum":{"Value":49.0,"Unit":"F","UnitType":18},"Maximum":{"Value":78.0,"Unit":"F","UnitType":18}},"Day":{"Icon":2,"IconPhrase":"Mostly sunny","HasPrecipitation":false},"Night":{"Icon":34,"IconPhrase":"Mostly clear","HasPrecipitation":false},"Sources":["AccuWeather"],"MobileLink":"http://m.accuweather.com/en/nz/hamilton/256405/daily-weather-forecast/256405?day=1&lang=en-us","Link":"http://www.accuweather.com/en/nz/hamilton/256405/daily-weather-forecast/256405?day=1&lang=en-us"},{"Date":"2020-03-15T07:00:00+13:00","EpochDate":1584208800,"Temperature":{"Minimum":{"Value":49.0,"Unit":"F","UnitType":18},"Maximum":{"Value":80.0,"Unit":"F","UnitType":18}},"Day":{"Icon":1,"IconPhrase":"Sunny","HasPrecipitation":false},"Night":{"Icon":38,"IconPhrase":"Mostly cloudy","HasPrecipitation":false},"Sources":["AccuWeather"],"MobileLink":"http://m.accuweather.com/en/nz/hamilton/256405/daily-weather-forecast/256405?day=2&lang=en-us","Link":"http://www.accuweather.com/en/nz/hamilton/256405/daily-weather-forecast/256405?day=2&lang=en-us"},{"Date":"2020-03-16T07:00:00+13:00","EpochDate":1584295200,"Temperature":{"Minimum":{"Value":59.0,"Unit":"F","UnitType":18},"Maximum":{"Value":76.0,"Unit":"F","UnitType":18}},"Day":{"Icon":4,"IconPhrase":"Intermittent clouds","HasPrecipitation":false},"Night":{"Icon":38,"IconPhrase":"Mostly cloudy","HasPrecipitation":false},"Sources":["AccuWeather"],"MobileLink":"http://m.accuweather.com/en/nz/hamilton/256405/daily-weather-forecast/256405?day=3&lang=en-us","Link":"http://www.accuweather.com/en/nz/hamilton/256405/daily-weather-forecast/256405?day=3&lang=en-us"},{"Date":"2020-03-17T07:00:00+13:00","EpochDate":1584381600,"Temperature":{"Minimum":{"Value":44.0,"Unit":"F","UnitType":18},"Maximum":{"Value":70.0,"Unit":"F","UnitType":18}},"Day":{"Icon":4,"IconPhrase":"Intermittent clouds","HasPrecipitation":false},"Night":{"Icon":35,"IconPhrase":"Partly cloudy","HasPrecipitation":false},"Sources":["AccuWeather"],"MobileLink":"http://m.accuweather.com/en/nz/hamilton/256405/daily-weather-forecast/256405?day=4&lang=en-us","Link":"http://www.accuweather.com/en/nz/hamilton/256405/daily-weather-forecast/256405?day=4&lang=en-us"},{"Date":"2020-03-18T07:00:00+13:00","EpochDate":1584468000,"Temperature":{"Minimum":{"Value":43.0,"Unit":"F","UnitType":18},"Maximum":{"Value":73.0,"Unit":"F","UnitType":18}},"Day":{"Icon":4,"IconPhrase":"Intermittent clouds","HasPrecipitation":false},"Night":{"Icon":35,"IconPhrase":"Partly cloudy","HasPrecipitation":false},"Sources":["AccuWeather"],"MobileLink":"http://m.accuweather.com/en/nz/hamilton/256405/daily-weather-forecast/256405?day=5&lang=en-us","Link":"http://www.accuweather.com/en/nz/hamilton/256405/daily-weather-forecast/256405?day=5&lang=en-us"}]}'
+        if true
+            response_body = JSON.parse(temp)
             return [] if !response_body.key?("Headline") || !response_body["Headline"].key?("Text")
             @headline = response_body["Headline"]["Text"]
             return [] if !response_body.key?("DailyForecasts")
@@ -33,11 +33,15 @@ class WeatherManager
                 temp_hash["MinValue"] = daily_forecast["Temperature"]["Minimum"]["Value"]
                 next if !daily_forecast["Temperature"]["Minimum"].key?("Unit")
                 temp_hash["MinUnit"] = daily_forecast["Temperature"]["Minimum"]["Unit"]
+                temp_hash["MinValue"] = change_fahrenheit_to_celsius(temp_hash["MinValue"], temp_hash["MinUnit"])
+                temp_hash["MinUnit"] = "C"
                 next if !daily_forecast.key?("Temperature") || !daily_forecast["Temperature"].key?("Maximum")
                 next if !daily_forecast["Temperature"]["Maximum"].key?("Value")
                 temp_hash["MaxValue"] = daily_forecast["Temperature"]["Maximum"]["Value"]
                 next if !daily_forecast["Temperature"]["Maximum"].key?("Unit")
                 temp_hash["MaxUnit"] = daily_forecast["Temperature"]["Maximum"]["Unit"]
+                temp_hash["MaxValue"] = change_fahrenheit_to_celsius(temp_hash["MaxValue"], temp_hash["MaxUnit"])
+                temp_hash["MaxUnit"] = "C"
                 next if !daily_forecast.key?("Day") || !daily_forecast["Day"].key?("IconPhrase")
                 temp_hash["DayCondition"] = daily_forecast["Day"]["IconPhrase"]
                 next if !daily_forecast.key?("Night") || !daily_forecast["Night"].key?("IconPhrase")
@@ -70,12 +74,15 @@ class WeatherManager
     end
 
     def to_tts_string
-        result_string = "Welcome to Jason's forecast. Now, let’s see what the weather is like today in #{#location["City"]}."
-        result_string += "#{headline}."
-        result_string += "Today, temperature is #{@weather_daily[0]["MinValue"]} degree to #{@weather_daily[0]["MaxValue"]}."
-        result_string += "It will be #{@weather_daily[0]["NightCondition"]}"
-        result_string += "Tomorrow, temperature is #{@weather_daily[1]["MinValue"]} degree to #{@weather_daily[1]]["MaxValue"]}."
-        result_string += "It will be #{@weather_daily[1]["NightCondition"]}"
+        result_string = "Welcome to Jason's Weather forecast. Now, let’s see what the weather is like today in #{@location["City"]}. "
+        result_string += "#{@headline}. "
+        result_string += "Today, temperature is (#{@weather_daily[0]["MinValue"]}) degree to (#{@weather_daily[0]["MaxValue"]}) degree. "
+        result_string += "It will be #{@weather_daily[0]["DayCondition"]} for most of the day. "
+        result_string += "And #{@weather_daily[0]["NightCondition"]} in the evening. "
+        result_string += "Tomorrow, temperature is (#{@weather_daily[1]["MinValue"]}) degree to (#{@weather_daily[1]["MaxValue"]}) degree. "
+        result_string += "It will be #{@weather_daily[1]["DayCondition"]} for most of the day. "
+        result_string += "And #{@weather_daily[1]["NightCondition"]} in the evening. "
+        return result_string
     end
 
     def to_table_string

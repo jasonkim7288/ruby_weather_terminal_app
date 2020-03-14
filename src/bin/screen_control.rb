@@ -2,6 +2,8 @@ require 'tty-font'
 require 'tty-prompt'
 require 'colorize'
 require 'tty-table'
+require 'pp'
+require 'mac/say'
 require_relative '../lib/location_manager'
 require_relative '../lib/accuweather_constant'
 
@@ -74,5 +76,10 @@ module ScreenControl
     def show_service_unavailable
         puts AccuweatherConstant::STR_SERVICE_UNAVAILABLE
         press_any_key
+    end
+
+    def tts_run(str_tts)
+        talker = Mac::Say.new(voice: :alex, rate: 200)
+        talker.say string: str_tts
     end
 end
