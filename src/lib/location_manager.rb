@@ -1,7 +1,6 @@
 require 'json'
-require 'fileutils'
 
-require_relative 'rest_accuweather'
+require_relative 'rest_accuweather_service'
 
 class LocationManager
     attr_reader :count_hash, :location_list
@@ -17,12 +16,12 @@ class LocationManager
 
     def get_location_list(location)
         result_array = []
-        # response = RestAccuweather.instance.get_location(location)    
-        # if response.code == 200
-        #     response_body_array = JSON.parse(response.body)
-        temp = '[{"Version":1,"Key":"55490","Type":"City","Rank":35,"LocalizedName":"Hamilton","EnglishName":"Hamilton","PrimaryPostalCode":"L8P","Region":{"ID":"NAM","LocalizedName":"North America","EnglishName":"North America"},"Country":{"ID":"CA","LocalizedName":"Canada","EnglishName":"Canada"},"AdministrativeArea":{"ID":"ON","LocalizedName":"Ontario","EnglishName":"Ontario","Level":1,"LocalizedType":"Province","EnglishType":"Province","CountryID":"CA"},"TimeZone":{"Code":"EDT","Name":"America/Toronto","GmtOffset":-4.0,"IsDaylightSaving":true,"NextOffsetChange":"2020-11-01T06:00:00Z"},"GeoPosition":{"Latitude":43.254,"Longitude":-79.876,"Elevation":{"Metric":{"Value":96.0,"Unit":"m","UnitType":5},"Imperial":{"Value":314.0,"Unit":"ft","UnitType":0}}},"IsAlias":false,"SupplementalAdminAreas":[{"Level":2,"LocalizedName":"Hamilton","EnglishName":"Hamilton"}],"DataSets":["AirQualityCurrentConditions","AirQualityForecasts","Alerts","ForecastConfidence","MinuteCast","Radar"]},{"Version":1,"Key":"256405","Type":"City","Rank":41,"LocalizedName":"Hamilton","EnglishName":"Hamilton","PrimaryPostalCode":"","Region":{"ID":"OCN","LocalizedName":"Oceania","EnglishName":"Oceania"},"Country":{"ID":"NZ","LocalizedName":"New Zealand","EnglishName":"New Zealand"},"AdministrativeArea":{"ID":"WKO","LocalizedName":"Waikato","EnglishName":"Waikato","Level":1,"LocalizedType":"Region","EnglishType":"Region","CountryID":"NZ"},"TimeZone":{"Code":"NZDT","Name":"Pacific/Auckland","GmtOffset":13.0,"IsDaylightSaving":true,"NextOffsetChange":"2020-04-04T14:00:00Z"},"GeoPosition":{"Latitude":-37.785,"Longitude":175.281,"Elevation":{"Metric":{"Value":27.0,"Unit":"m","UnitType":5},"Imperial":{"Value":88.0,"Unit":"ft","UnitType":0}}},"IsAlias":false,"SupplementalAdminAreas":[{"Level":2,"LocalizedName":"Hamilton City","EnglishName":"Hamilton City"}],"DataSets":["AirQualityCurrentConditions","AirQualityForecasts","Alerts"]}]'
-        if true
-            response_body_array = JSON.parse(temp)
+        response = RestAccuweatherService.instance.get_location(location)    
+        if response.code == 200
+            response_body_array = JSON.parse(response.body)
+        # temp = '[{"Version":1,"Key":"55490","Type":"City","Rank":35,"LocalizedName":"Hamilton","EnglishName":"Hamilton","PrimaryPostalCode":"L8P","Region":{"ID":"NAM","LocalizedName":"North America","EnglishName":"North America"},"Country":{"ID":"CA","LocalizedName":"Canada","EnglishName":"Canada"},"AdministrativeArea":{"ID":"ON","LocalizedName":"Ontario","EnglishName":"Ontario","Level":1,"LocalizedType":"Province","EnglishType":"Province","CountryID":"CA"},"TimeZone":{"Code":"EDT","Name":"America/Toronto","GmtOffset":-4.0,"IsDaylightSaving":true,"NextOffsetChange":"2020-11-01T06:00:00Z"},"GeoPosition":{"Latitude":43.254,"Longitude":-79.876,"Elevation":{"Metric":{"Value":96.0,"Unit":"m","UnitType":5},"Imperial":{"Value":314.0,"Unit":"ft","UnitType":0}}},"IsAlias":false,"SupplementalAdminAreas":[{"Level":2,"LocalizedName":"Hamilton","EnglishName":"Hamilton"}],"DataSets":["AirQualityCurrentConditions","AirQualityForecasts","Alerts","ForecastConfidence","MinuteCast","Radar"]},{"Version":1,"Key":"256405","Type":"City","Rank":41,"LocalizedName":"Hamilton","EnglishName":"Hamilton","PrimaryPostalCode":"","Region":{"ID":"OCN","LocalizedName":"Oceania","EnglishName":"Oceania"},"Country":{"ID":"NZ","LocalizedName":"New Zealand","EnglishName":"New Zealand"},"AdministrativeArea":{"ID":"WKO","LocalizedName":"Waikato","EnglishName":"Waikato","Level":1,"LocalizedType":"Region","EnglishType":"Region","CountryID":"NZ"},"TimeZone":{"Code":"NZDT","Name":"Pacific/Auckland","GmtOffset":13.0,"IsDaylightSaving":true,"NextOffsetChange":"2020-04-04T14:00:00Z"},"GeoPosition":{"Latitude":-37.785,"Longitude":175.281,"Elevation":{"Metric":{"Value":27.0,"Unit":"m","UnitType":5},"Imperial":{"Value":88.0,"Unit":"ft","UnitType":0}}},"IsAlias":false,"SupplementalAdminAreas":[{"Level":2,"LocalizedName":"Hamilton City","EnglishName":"Hamilton City"}],"DataSets":["AirQualityCurrentConditions","AirQualityForecasts","Alerts"]}]'
+        # if true
+        #     response_body_array = JSON.parse(temp)
             for response_body in response_body_array do
                 temp_hash = {}
                 next if !response_body.key?("Key")

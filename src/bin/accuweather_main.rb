@@ -29,8 +29,6 @@ loop do
                 ScreenControl.show_invalid_city
             end
         when end_index_selected_city + 1 # Delete a city
-            puts "Here"
-            gets
             selected_del_city_index = ScreenControl.ask_delete_city(location_manager)
             if selected_del_city_index != -1
                 location_manager.delete(selected_del_city_index)

@@ -1,12 +1,11 @@
 require 'singleton'
 require 'rest-client'
 
-class RestAccuweather
+class RestAccuweatherService
     include Singleton
 
     def initialize
-        # @accuweather_key = File.read("../res/accuweather_key.db")
-        @accuweather_key = "A91us5Ma0sfbbrVA8SVYBGVpS5ryg156"
+        @accuweather_key = File.read("../res/accuweather_key.db")
     end
 
     def self._load(str)
@@ -21,10 +20,6 @@ class RestAccuweather
 
     def get_weather_info(location_key)
         str_get = "http://dataservice.accuweather.com/forecasts/v1/daily/5day/#{location_key}?apikey=#{@accuweather_key}"
-        p str_get
         return RestClient.get(str_get)
     end
 end
-
-# rest = RestAccuweather.instance
-# p rest.get_location("Hamilton")
