@@ -21,6 +21,7 @@ class RestAccuweather
 
     def get_weather_info(location_key)
         str_get = "http://dataservice.accuweather.com/forecasts/v1/daily/5day/#{location_key}?apikey=#{@accuweather_key}"
+        p str_get
         return RestClient.get(str_get)
     end
 end
